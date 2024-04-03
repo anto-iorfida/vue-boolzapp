@@ -51,21 +51,23 @@
             </div>
 
             <div class="chat-boxes">
-               <!-- singola chat -->
+               <!-- singola chat ---------------------->
               
-               <div class="chat-info">
+               <div class="chat-info" 
+               v-for="(contact , index) in contacts"
+               @click="getNewChat(index)" >
                   <div class="img-profile">
-                     <img src="css/img/avatar_2.jpg" alt="contact">
+                     <img src="css/img/avatar_1.jpg" alt="">
                   </div>
                   <div class="chat-name">
-                     <p>Claudio</p>
+                     <p>{{contact.name}}</p>
                      <p>Ultimo</p>
                   </div>
                   <div class="chat-hour">
                      <p>12:00</p>
                   </div>
                </div>
-               
+                <!--/ singola chat ------------------->
 
             </div>
 
@@ -77,10 +79,10 @@
             <div class="box-info-contact d-flex d-align-center d-justify-between">
                <div class="chat-info height ">
                   <div class="img-profile">
-                     <img src="css/img/avatar_2.jpg" alt="contact">
+                     <img src="css/img/avatar_1.jpg" alt="contact">
                   </div>
                   <div class="chat-name ">
-                     <p>Claudio</p>
+                     <p></p>
                      <p>Ultimo</p>
                   </div>
                   
@@ -92,8 +94,13 @@
                </div>
             </div>
             <div class="box-chat">
-               <p class="message-user">misu</p>
-               <p class="message-contact">oknolkno</p>
+               <div class=" d-flex d-justify-between"
+               v-for="chat in contacts[activeChat].messages"
+               :class="chat.status">
+                  <p>{{chat.message}}</p>
+                  <p>{{chat.date}}</p>
+               </div>
+               
             </div>
             <div class="input-chat d-flex d-align-center">
                <i class="fa-regular fa-face-smile"></i>

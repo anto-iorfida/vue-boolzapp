@@ -49,8 +49,8 @@ img{
     MAIN
    --------*/
 .main-container{
-    height: 70vh;
-    width: 70vw;
+    height: 80vh;
+    width: 80vw;
     min-width: 600px;
     display: flex;
     margin: 40px auto;
@@ -188,26 +188,37 @@ img{
     height: calc(100% - 110px);
     width: 100%;
     overflow: auto;
-    padding: 50px ;
+    padding: 40px ;
     background-image: url(img/mine.jpg);
-    display: flex;
-    flex-direction: column;
-    
 }
 
-.message-user{
+.box-chat > div{
+    margin-bottom: 6px;
+    width: 40%;
+    padding: 7px;
+    border-radius: 6px;
+}
+
+.received{
     background-color: #d5f9ba;
-    text-align: end;
-    padding: 10px;
-    max-width: 200px;
-    justify-content: flex-start;
+    margin-left: auto;
 }
-.message-contact{
+.sent{
     background-color: white ;
-    text-align: start;
-    padding: 10px;
-    max-width: 200px;
+    margin-right: auto;
 }
+
+.received p:first-child,
+ .sent p:first-child{
+    font-size: x-small;
+}
+.received p:last-child,
+ .sent p:last-child{
+    font-size: 8px;
+    color: gray;
+    margin-top: 8px;
+}
+
 /* /box chat ---------------------------*/
 .input-chat{
     height: 40px;

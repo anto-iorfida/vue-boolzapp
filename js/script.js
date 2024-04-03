@@ -83,8 +83,13 @@ createApp({
                 ],
               },
             ],
+
+            activeChat: 0
         };
     },
     methods: {
+        getNewChat(index){
+            this.activeChat = index;
+        }
     }
 }).mount('#app');
