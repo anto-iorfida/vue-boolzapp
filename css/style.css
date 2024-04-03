@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    border: 0.3px dashed salmon;
+    /* border: 0.3px dashed salmon; */
 }
 
 /* --------
@@ -19,7 +19,13 @@ body{
    --------*/
 
 /* utility */
+img{
+    max-width: 100%;
+}
 
+.active{
+    background-color: #E9EBEB;
+}
 
 
 /* --------
@@ -41,16 +47,116 @@ body{
 }
 
 .box-info-user{
-    background-color: #eaeaea;
     width: 100%;
-    height: 76px;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 6px;
+    border-right: 1px solid #b1b1b1;
+    background-color: #eaeaea;
+}
+
+.icon-info-user *{
+    color: #b1b1b1;
+    margin-right: 8px;
 }
 
 .box-notific{
     width: 100%;
-    height: 80px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     background-color: #8edafc ;
+    padding: 8px 6px;
 }
+
+.icon-notific{
+    background-color: white;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.icon-notific i {
+    color: #8edafc;
+}
+
+.box-notific p:first-child{
+    font-size: small;
+}
+.box-notific p:last-child{
+    font-size: x-small;
+    color: grey;
+    text-decoration: underline;
+}
+
+.box-input-contact{
+    height: 30px;
+    padding: 4px;
+    display: flex;
+    background-color: #fafafa;
+}
+
+.box-input-contact input{
+    width: 100%;
+    border: none;
+}
+.box-input-contact button{
+    border: none;
+    color: gray;
+    padding: 0 15px;
+    background-color: white;
+
+}
+
+.box-chat{
+    width: 100%;
+    height: 220px;
+    overflow: auto;
+    
+}
+/* single-chat---------------- */
+.img-profile img{
+    height: 36px;
+}
+
+.img-profile{
+    height: 36px;
+    width: 36px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.chat-info{
+    width: 100%;
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 8px 6px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.chat-name p:first-child{
+    font-size: small;
+}
+.chat-name p:last-child{
+    font-size: xx-small;
+    color: gray;
+}
+
+.chat-hour{
+    position: absolute;
+    right: 4px;
+    font-size: xx-small;
+    color: gray;
+}
+/* /single-chat---------------- */
+
+
+
+
 
 /* container-right-chat */
 .colon-chat{
@@ -62,7 +168,7 @@ body{
 .box-info-contact{
     background-color: #eaeaea;
     width: 100%;
-    height: 76px;
+    height: 70px;
 }
 /* --------
     /MAIN
