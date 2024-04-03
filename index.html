@@ -36,7 +36,7 @@
                   <i class="fa-solid fa-ellipsis-vertical"></i>
                </div>
             </div>
-
+                                 <!---------BOX NOTIFICA ------------>
             <div class="box-notific">
                <div class="icon-notific"><i class="fa-solid fa-bell-slash"></i></div>
                <div>
@@ -44,20 +44,22 @@
                   <p>Attiva notifiche desktop</p>
                </div>
             </div>
+                                  <!--------/BOX NOTIFICA ------------>
 
+                                  <!--------/BOX INPUT ------------>
             <div class="box-input-contact">
                <button><i class="fa-solid fa-magnifying-glass"></i></button>
                <input type="text" placeholder="Cerca o inizia una nuova chat">
             </div>
-
+                                  <!--------/BOX INPUT ------------>
             <div class="chat-boxes">
-               <!-- singola chat ---------------------->
+                                 <!-----------SINGLE CHAT------------>
               
                <div class="chat-info" 
                v-for="(contact , index) in contacts"
                @click="getNewChat(index)" >
                   <div class="img-profile">
-                     <img src="css/img/avatar_1.jpg" alt="">
+                     <img :src="'css/img/avatar' + contact.avatar + '.jpg'" alt="">
                   </div>
                   <div class="chat-name">
                      <p>{{contact.name}}</p>
@@ -67,7 +69,7 @@
                      <p>12:00</p>
                   </div>
                </div>
-                <!--/ singola chat ------------------->
+                                  <!----------/SINGLE CHAT------------>
 
             </div>
 
@@ -75,33 +77,42 @@
 
          <!-- right column with chat -->
          <div class="colon-chat">
-
+                                 <!---------  HEADER BOX CHAT -------->
             <div class="box-info-contact d-flex d-align-center d-justify-between">
                <div class="chat-info height ">
                   <div class="img-profile">
-                     <img src="css/img/avatar_1.jpg" alt="contact">
+                     <img :src="'css/img/avatar' + contacts[activeChat].avatar + '.jpg'" alt="">
                   </div>
                   <div class="chat-name ">
-                     <p></p>
+                     <p>{{contacts[activeChat].name}}</p>
                      <p>Ultimo</p>
                   </div>
                   
                </div>
                <div class="icon-info-user">
+                  <i class="fa-solid fa-phone"></i>
                   <i class="fa-solid fa-magnifying-glass"></i>
                   <i class="fa-solid fa-paperclip"></i>
                   <i class="fa-solid fa-ellipsis-vertical"></i>
                </div>
             </div>
+                                   <!---------  HEADER BOX CHAT ---------->
+                                    <!------------  CHAT ----------------->
+
             <div class="box-chat">
+               <p class="critografy"> 🔒 I messaggi che invii in questa chat e le
+                  chiamate sono ora protetti con la crittografia
+                  end-to-end. Tocca per maggiori info.</p>
                <div class=" d-flex d-justify-between"
                v-for="chat in contacts[activeChat].messages"
                :class="chat.status">
+                  
                   <p>{{chat.message}}</p>
                   <p>{{chat.date}}</p>
                </div>
                
             </div>
+                                       <!------------/ CHAT ----------------->
             <div class="input-chat d-flex d-align-center">
                <i class="fa-regular fa-face-smile"></i>
                <input type="text" placeholder="Scrivi un messaggio">
