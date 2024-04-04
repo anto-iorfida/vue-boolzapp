@@ -85,8 +85,10 @@ createApp({
             ],
             emocy: false,
             notific: true,
+            animatedActive : false,
             activeChat: 0,
             messageSend:'',
+            cerchContact:'',
             
         };
     },
@@ -111,11 +113,23 @@ createApp({
                 message: this.messageSend,
                 status: 'sent'
             }
-           this.contacts[this.activeChat].messages.push(templateSendMessage);
+                 // if the length of the word does not exceed 0 the animation starts
+            if(this.messageSend.length > 0){
+
+                this.contacts[this.activeChat].messages.push(templateSendMessage);
+                // sent messsage contact later 1 second
+                setTimeout(() => {
+                    this.getReceiveMessage()
+                   }, 1000);
+
+            }else{
+                this.animatedActive = true
+                setTimeout(() => {
+                    this.animatedActive = false;
+                }, 1000);
+            }
            this.messageSend = '';
-           setTimeout(() => {
-            this.getReceiveMessage()
-        }, 1000);
+           
            
         },
         // function contact send message later 1 second
@@ -128,6 +142,19 @@ createApp({
             }
             this.contacts[this.activeChat].messages.push(templateReceiveMessage);
 
+        },
+       
+        getCerchContact() {
+            this.contacts.forEach(contact => {
+                const wordInput = this.cerchContact.toLowerCase(); 
+                const contactName = contact.name.toLowerCase(); 
+               
+                if (!contactName.includes(wordInput)) {
+                    contact.visible = false; 
+                } else {
+                    contact.visible = true; 
+                }
+            });
         }
        
     }

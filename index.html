@@ -56,12 +56,14 @@
             </div>
                                   <!--------/BOX NOTIFICA ------------>
 
-                                  <!--------/BOX INPUT ------------>
+                                  <!--------/BOX INPUT CERCH------------>
             <div class="box-input-contact d-flex">
                <button><i class="fa-solid fa-magnifying-glass"></i></button>
-               <input type="text" placeholder="Cerca o inizia una nuova chat">
+               <input type="text" placeholder="Cerca o inizia una nuova chat" 
+                      v-model="cerchContact" 
+                      @input="getCerchContact">
             </div>
-                                  <!--------/BOX INPUT ------------>
+                                  <!--------/BOX INPUT CERCH------------>
             <div class="chat-boxes">
                                  <!-----------SINGLE CHAT------------>
               
@@ -70,14 +72,14 @@
                :class="{'active' : index === activeChat }"
                v-for="(contact , index) in contacts"
                @click="getNewChat(index)" >
-                  <div class="img-profile">
+                  <div v-if="contact.visible" class="img-profile">
                      <img :src="'css/img/avatar' + contact.avatar + '.jpg'" alt="">
                   </div>
-                  <div class="chat-name">
+                  <div v-if="contact.visible" class="chat-name">
                      <p>{{contact.name}}</p>
                      <p>Ultimo</p>
                   </div>
-                  <div class="chat-hour">
+                  <div v-if="contact.visible" class="chat-hour">
                      <p>12:00</p>
                   </div>
                </div>
@@ -116,8 +118,8 @@
                   chiamate sono ora protetti con la crittografia
                   end-to-end. Tocca per maggiori info.</p>
                <div class=" d-flex d-justify-between"
-               v-for="chat in contacts[activeChat].messages"
-               :class="chat.status">
+                    v-for="chat in contacts[activeChat].messages"
+                    :class="chat.status">
                   
                   <p>{{chat.message}}</p>
                   <p>{{chat.date}}</p>
@@ -128,7 +130,10 @@
                                        <!--------- INPUT CHAT --------------->
             <div class="input-chat d-flex d-align-center">
                <i class="fa-regular fa-face-smile" @click="getEmocy"></i>
-               <input type="text" placeholder="Scrivi un messaggio" v-model="messageSend" v-on:keyup.enter="getSentMessage" >
+               <input type="text" placeholder="Scrivi un messaggio" 
+                      :class="{ 'animatedInputWrong': animatedActive }" 
+                      v-model="messageSend" 
+                      v-on:keyup.enter="getSentMessage" >
                <i class="fa-solid fa-microphone" ></i>
             </div>
             <!-- box not visible with activated click icoin face smile -->

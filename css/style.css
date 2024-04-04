@@ -47,17 +47,18 @@ img{
 /* ANIMATION */
 
 /* animation when you send and there is nothing */
-/* .input-chat input{
+.animatedInputWrong{
     animation: vibra 0.5s ease-in-out;
+   
 }
 
 @keyframes vibra {
     0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
+    25% { transform: translateX(-7px); }
+    50% { transform: translateX(7px); }
+    75% { transform: translateX(-7px); }
     100% { transform: translateX(0); }
-  }  */
+  } 
 /* --------
     MAIN
    --------*/
@@ -65,7 +66,7 @@ img{
     height: 80vh;
     width: 80vw;
     min-width: 600px;
-    margin: 40px auto;
+    margin: 60px auto;
 }
 
 /* container-left-contact */
