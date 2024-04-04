@@ -83,13 +83,52 @@ createApp({
                 ],
               },
             ],
-
-            activeChat: 0
+            emocy: false,
+            notific: true,
+            activeChat: 0,
+            messageSend:'',
+            
         };
     },
     methods: {
+        // setting up activeChat = index single object
         getNewChat(index){
             this.activeChat = index;
+        },
+        // activate/deactivate notifications box
+        changeNotific(){
+           this.notific = !this.notific
+        },
+        // activate/deactivate box with emocy
+        getEmocy(){
+           this.emocy =!this.emocy
+        },
+        // function user send message with input
+        getSentMessage(){
+            const templateSendMessage =
+            {
+                date: '10/01/2020 15:50:00',
+                message: this.messageSend,
+                status: 'sent'
+            }
+           this.contacts[this.activeChat].messages.push(templateSendMessage);
+           this.messageSend = '';
+           setTimeout(() => {
+            this.getReceiveMessage()
+        }, 1000);
+           
+        },
+        // function contact send message later 1 second
+        getReceiveMessage(){
+            const templateReceiveMessage =
+            {
+                date: '10/01/2020 15:50:00',
+                message: 'ok',
+                status: 'received'
+            }
+            this.contacts[this.activeChat].messages.push(templateReceiveMessage);
+
         }
+       
     }
 }).mount('#app');

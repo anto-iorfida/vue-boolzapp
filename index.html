@@ -21,11 +21,11 @@
 
    <div id="app">
 
-      <div class="main-container">
+      <div class="main-container d-flex">
          <!-- left column with contacts -->
          <div class="colon-contact">
 
-            <div class="box-info-user">
+            <div class="box-info-user d-flex d-justify-between d-align-center">
                <div class="img-profile">
                   <img src="css/img/avatar_2.jpg" alt="contact">
                </div>
@@ -37,17 +37,27 @@
                </div>
             </div>
                                  <!---------BOX NOTIFICA ------------>
-            <div class="box-notific">
-               <div class="icon-notific"><i class="fa-solid fa-bell-slash"></i></div>
-               <div>
-                  <p>Ricevi notifiche di nuovi messaggi</p>
-                  <p>Attiva notifiche desktop</p>
-               </div>
+            <div class="box-notific d-flex d-align-center">
+               <template v-if="notific">
+                  <div class="icon-notific"><i class="fa-solid fa-bell-slash"></i></div>
+                  <div>
+                     <p>Ricevi notifiche di nuovi messaggi</p>
+                     <p @click="changeNotific">Attiva notifiche desktop</p>
+                  </div>
+               </template>
+               
+               <template v-else>
+                  <div class="icon-notific"><i class="fa-solid fa-bell"></i></div>
+                  <div>
+                     <p>Riposati dai messaggi</p>
+                     <p @click="changeNotific">Disattiva notifiche desktop</p>
+                  </div>
+               </template>
             </div>
                                   <!--------/BOX NOTIFICA ------------>
 
                                   <!--------/BOX INPUT ------------>
-            <div class="box-input-contact">
+            <div class="box-input-contact d-flex">
                <button><i class="fa-solid fa-magnifying-glass"></i></button>
                <input type="text" placeholder="Cerca o inizia una nuova chat">
             </div>
@@ -55,7 +65,9 @@
             <div class="chat-boxes">
                                  <!-----------SINGLE CHAT------------>
               
-               <div class="chat-info" 
+               <div 
+               class="chat-info d-flex" 
+               :class="{'active' : index === activeChat }"
                v-for="(contact , index) in contacts"
                @click="getNewChat(index)" >
                   <div class="img-profile">
@@ -79,13 +91,13 @@
          <div class="colon-chat">
                                  <!---------  HEADER BOX CHAT -------->
             <div class="box-info-contact d-flex d-align-center d-justify-between">
-               <div class="chat-info height ">
+               <div class="chat-info d-flex height ">
                   <div class="img-profile">
                      <img :src="'css/img/avatar' + contacts[activeChat].avatar + '.jpg'" alt="">
                   </div>
                   <div class="chat-name ">
                      <p>{{contacts[activeChat].name}}</p>
-                     <p>Ultimo</p>
+                     <p>Ultimo accesso oggi alle 8:35</p>
                   </div>
                   
                </div>
@@ -113,12 +125,16 @@
                
             </div>
                                        <!------------/ CHAT ----------------->
+                                       <!--------- INPUT CHAT --------------->
             <div class="input-chat d-flex d-align-center">
-               <i class="fa-regular fa-face-smile"></i>
-               <input type="text" placeholder="Scrivi un messaggio">
-               <i class="fa-solid fa-microphone"></i>
+               <i class="fa-regular fa-face-smile" @click="getEmocy"></i>
+               <input type="text" placeholder="Scrivi un messaggio" v-model="messageSend" v-on:keyup.enter="getSentMessage" >
+               <i class="fa-solid fa-microphone" ></i>
             </div>
+            <!-- box not visible with activated click icoin face smile -->
+            <template v-if="emocy" ><div class="box-emocy">😂❤😊🤣😍😒👌😘💕😁👍🙌🤦‍♀️🤦‍♂️🤷‍♀️😢😎😉🤞✌🤷‍♂️😜👏💋🌹</div></template>
          </div>
+                                       <!---------/INPUT CHAT --------------->
 
       </div>
 
