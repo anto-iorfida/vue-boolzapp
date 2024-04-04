@@ -94,10 +94,11 @@ createApp({
         };
     },
     methods: {
-      
+
         // setting up activeChat = index single object
         getNewChat(index){
             this.activeChat = index;
+            this.settingMessage = null;
         },
 
         // activate/deactivate notifications box
@@ -168,12 +169,14 @@ createApp({
         getSettingMessage(index){
             
             this.settingMessage = index;
+           
             
         },
-
+        
         // function delete single message
         deleteMessage(activechat,index){
           this.contacts[activechat].messages.splice(index, 1);
+          this.settingMessage = null;
         }
        
     }

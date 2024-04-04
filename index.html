@@ -64,8 +64,9 @@
                       @input="getCerchContact">
             </div>
                                   <!--------/BOX INPUT CERCH------------>
-            <div class="chat-boxes">
-                                 <!-----------SINGLE CHAT------------>
+
+                                  <!-----------SINGLE CHAT------------>
+              <div class="chat-boxes">
               
                <div 
                class="chat-info d-flex" 
@@ -111,9 +112,10 @@
                </div>
             </div>
                                    <!---------  HEADER BOX CHAT ---------->
+
                                     <!------------  CHAT ----------------->
 
-            <div class="box-chat">
+            <div class="box-chat" >
                <p class="critografy"> 🔒 I messaggi che invii in questa chat e le
                   chiamate sono ora protetti con la crittografia
                   end-to-end. Tocca per maggiori info.</p>
@@ -125,7 +127,7 @@
                     <i class="setting-message fa-solid fa-check" @click="getSettingMessage(index)"></i>
                     
                     <template v-if="settingMessage === index ">
-                        <div class="box-delete-message">
+                        <div class="box-delete-message" >
                            <span>info message</span><br>
                            <span @click="deleteMessage(activeChat,index)">detete message</span>
                         </div>
@@ -136,6 +138,7 @@
                
             </div>
                                        <!------------/ CHAT ----------------->
+
                                        <!--------- INPUT CHAT --------------->
             <div class="input-chat d-flex d-align-center">
                <i class="fa-regular fa-face-smile" @click="getEmocy"></i>
