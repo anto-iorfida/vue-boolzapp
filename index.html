@@ -17,7 +17,7 @@
    <title>Vue-Boolzapp</title>
    <script src="https://unpkg.com/vue@3"></script>
 </head>
-<body>
+<body >
 
    <div id="app">
 
@@ -127,7 +127,7 @@
                     <template v-if="settingMessage === index ">
                         <div class="box-delete-message">
                            <span>info message</span><br>
-                           <span>detete message</span>
+                           <span @click="deleteMessage(activeChat,index)">detete message</span>
                         </div>
                      </template>
                   

@@ -90,22 +90,26 @@ createApp({
             activeChat: 0,
             messageSend:'',
             cerchContact:'',
-            
+          
         };
     },
     methods: {
+      
         // setting up activeChat = index single object
         getNewChat(index){
             this.activeChat = index;
         },
+
         // activate/deactivate notifications box
         changeNotific(){
            this.notific = !this.notific
         },
+
         // activate/deactivate box with emocy
         getEmocy(){
            this.emocy =!this.emocy
         },
+
         // function user send message with input
         getSentMessage(){
             const templateSendMessage =
@@ -133,6 +137,7 @@ createApp({
            
            
         },
+
         // function contact send message later 1 second
         getReceiveMessage(){
             const templateReceiveMessage =
@@ -144,6 +149,7 @@ createApp({
             this.contacts[this.activeChat].messages.push(templateReceiveMessage);
 
         },
+
        //verificy word input user whit word contact esist    
         getCerchContact() {
             this.contacts.forEach(contact => {
@@ -157,9 +163,17 @@ createApp({
                 }
             });
         },
+
+        // click add setting single message
         getSettingMessage(index){
             
             this.settingMessage = index;
+            
+        },
+
+        // function delete single message
+        deleteMessage(activechat,index){
+          this.contacts[activechat].messages.splice(index, 1);
         }
        
     }
