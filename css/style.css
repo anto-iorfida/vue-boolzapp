@@ -217,8 +217,43 @@ img{
     width: 40%;
     padding: 7px;
     border-radius: 6px;
+    position: relative;
+}
+/* -------------------------------------------------single message */
+.box-chat > div:hover .setting-message{
+    display: block;
 }
 
+.setting-message{
+    display: none;
+    position: absolute;
+    right: 4px;
+    top: 2px;
+    font-size: small;
+    color: #b1b1b1;
+    cursor: pointer;
+}
+
+.box-delete-message{
+    position: absolute;
+    background-color: whitesmoke;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    font-size: small;
+    color: gray;
+    text-align: center;
+    width: 140px;
+    top: 10px;
+    right: 16px;
+    z-index: 10;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.box-delete-message span:hover{
+    color: rgba(128, 128, 128, 0.599);
+    cursor: pointer;
+}
+/* --------------------------------------------- /single message*/
 .sent{
     background-color: #d5f9ba;
     margin-left: auto;

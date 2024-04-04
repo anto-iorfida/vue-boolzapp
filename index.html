@@ -118,10 +118,19 @@
                   chiamate sono ora protetti con la crittografia
                   end-to-end. Tocca per maggiori info.</p>
                <div class=" d-flex d-justify-between"
-                    v-for="chat in contacts[activeChat].messages"
+                    v-for="(chat ,index) in contacts[activeChat].messages"
                     :class="chat.status">
                   
-                  <p>{{chat.message}}</p>
+                    <p>{{chat.message}} </p>
+                    <i class="setting-message fa-solid fa-check" @click="getSettingMessage(index)"></i>
+                    
+                    <template v-if="settingMessage === index ">
+                        <div class="box-delete-message">
+                           <span>info message</span><br>
+                           <span>detete message</span>
+                        </div>
+                     </template>
+                  
                   <p>{{chat.date}}</p>
                </div>
                

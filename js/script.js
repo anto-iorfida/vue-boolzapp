@@ -86,6 +86,7 @@ createApp({
             emocy: false,
             notific: true,
             animatedActive : false,
+            settingMessage : null,
             activeChat: 0,
             messageSend:'',
             cerchContact:'',
@@ -143,7 +144,7 @@ createApp({
             this.contacts[this.activeChat].messages.push(templateReceiveMessage);
 
         },
-       
+       //verificy word input user whit word contact esist    
         getCerchContact() {
             this.contacts.forEach(contact => {
                 const wordInput = this.cerchContact.toLowerCase(); 
@@ -155,6 +156,10 @@ createApp({
                     contact.visible = true; 
                 }
             });
+        },
+        getSettingMessage(index){
+            
+            this.settingMessage = index;
         }
        
     }
