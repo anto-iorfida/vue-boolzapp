@@ -96,6 +96,8 @@ createApp({
             activeChat: 0,
             // variable connected to the input, everything it writes user
             messageSend:'',
+            // variable online and sta scrivendo...
+            userAccess: 'Online',
             // // It is used for cerch contact in the input in box input user
             cerchContact:'',
             // random answers that the pc 
@@ -120,8 +122,9 @@ createApp({
 
         // setting up activeChat = index single object
         getNewChat(index){
-            this.activeChat = index;
-            this.settingMessage = null;
+          this.activeChat = index;
+          this.settingMessage = null;
+          this.getAutoScroll()
         },
 
         // activate/deactivate notifications box
@@ -171,10 +174,15 @@ createApp({
 
                 this.contacts[this.activeChat].messages.push(templateSendMessage);
 
+                this.userAccess = 'Sta scrivendo'
+
                 // sent messsage contact later 1 second
                 setTimeout(() => {
                     this.getReceiveMessage()
-                   }, 1000);
+                   }, 3000);
+                setTimeout(() => {
+                    this.userAccess = 'Online'
+                }, 3001);
                   
                   
                   this.getAutoScroll()
@@ -194,7 +202,9 @@ createApp({
         // scoll automatic last message 
         getAutoScroll(){
           const chatScroll = this.$refs.chatScroll;
-          chatScroll.scrollTop = chatScroll.scrollHeight;
+          setTimeout(()=>{
+            chatScroll.scrollTop = chatScroll.scrollHeight;
+          },1000);
           
         },
 

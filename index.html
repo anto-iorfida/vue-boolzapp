@@ -76,7 +76,9 @@
                class="chat-info d-flex" 
                :class="{'active' : index === activeChat }"
                v-for="(contact , index) in contacts"
-               @click="getNewChat(index)" >
+               @click="getNewChat(index)" 
+               
+               >
                   <div v-if="contact.visible" class="img-profile">
                      <img :src="'css/img/avatar' + contact.avatar + '.jpg'" alt="">
                   </div>
@@ -110,7 +112,7 @@
                   </div>
                   <div class="chat-name ">
                      <p>{{contacts[activeChat].name}}</p>
-                     <p>Ultimo accesso oggi alle 8:35</p>
+                     <p>{{userAccess}}</p>
                   </div>
                   
                </div>
