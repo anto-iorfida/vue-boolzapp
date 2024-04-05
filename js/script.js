@@ -1,5 +1,6 @@
 const { createApp } = Vue;
 
+
 createApp({
     data() {
         return {
@@ -83,13 +84,35 @@ createApp({
                 ],
               },
             ],
+            // It is used to show the emocy box
             emocy: false,
+            // It is used to change icon and text in box notific 
             notific: true,
+            // if in the input the length of the word does not exceed 0 it appears
             animatedActive : false,
+            // It is used to show the setting box of the single message
             settingMessage : null,
+            // important index that makes the chat active
             activeChat: 0,
+            // variable connected to the input, everything it writes user
             messageSend:'',
+            // // It is used for cerch contact in the input in box input user
             cerchContact:'',
+            // random answers that the pc 
+            risposteGenerali : [
+              "Yo, che succede?",
+              "Buongiorno! Sono felice di parlarti.",
+              "Pronto a rispondere alle tue domande!",
+              "Dimmi cosa hai in mente e farò del mio meglio per aiutarti.",
+              "Non esitare a chiedere, sono qui per questo!",
+              "Qualunque sia la tua richiesta, farò del mio meglio per soddisfarla.",
+              "A tua disposizione per qualsiasi chiarimento o necessità.",
+              "Sentiti libero di esplorare le mie capacità e farmi domande.",
+              "Sono pronto ad ascoltarti e a darti il mio supporto.",
+              "Insieme possiamo trovare la soluzione che cerchi.",
+            ],
+            
+            
           
         };
     },
@@ -111,18 +134,32 @@ createApp({
            this.emocy =!this.emocy
         },
 
-        // function user send message with input
+        // time now in the single chat
+        getFormattedDate() {
+          const date = new Date();
+          const options = {
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true,
+            timeZone: 'Europe/Rome' 
+          };
+          return date.toLocaleTimeString('it-IT', options);
+        },
+         
+       // function user send message with input
         getSentMessage(){
+          
             const templateSendMessage =
             {
-                date: '10/01/2020 15:50:00',
+                date: this.getFormattedDate(),
                 message: this.messageSend,
                 status: 'sent'
             }
-                 // if the length of the word does not exceed 0 the animation starts
+             // if the length of the word does not exceed 0 the animation starts
             if(this.messageSend.length > 0){
 
                 this.contacts[this.activeChat].messages.push(templateSendMessage);
+
                 // sent messsage contact later 1 second
                 setTimeout(() => {
                     this.getReceiveMessage()
@@ -134,8 +171,8 @@ createApp({
                     this.animatedActive = false;
                 }, 1000);
             }
-           this.messageSend = '';
-           
+
+            this.messageSend = '';
            
         },
 
@@ -143,8 +180,9 @@ createApp({
         getReceiveMessage(){
             const templateReceiveMessage =
             {
-                date: '10/01/2020 15:50:00',
-                message: 'ok',
+                date: this.getFormattedDate(),
+                // formula per generare risposte casuali
+                message: this.risposteGenerali[Math.floor(Math.random() * this.risposteGenerali.length)],
                 status: 'received'
             }
             this.contacts[this.activeChat].messages.push(templateReceiveMessage);
@@ -174,10 +212,13 @@ createApp({
         },
         
         // function delete single message
-        deleteMessage(activechat,index){
-          this.contacts[activechat].messages.splice(index, 1);
+        deleteMessage(activeChat,index){
+          this.contacts[activeChat].messages.splice(index, 1);
           this.settingMessage = null;
-        }
+        },
+
+        // 
        
-    }
+    },
+    
 }).mount('#app');

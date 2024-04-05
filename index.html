@@ -8,6 +8,10 @@
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
    <!--/GOOGLE FONT -->
+
+   <!-- LUXON TIME -->
+   <!-- <script src="luxon.js"></script> -->
+   <!--/LUXON TIME -->
    
    <!-- FONTAWESOME -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -18,8 +22,8 @@
    <script src="https://unpkg.com/vue@3"></script>
 </head>
 <body >
-
    <div id="app">
+
 
       <div class="main-container d-flex">
          <!-- left column with contacts -->
@@ -65,7 +69,7 @@
             </div>
                                   <!--------/BOX INPUT CERCH------------>
 
-                                  <!-----------SINGLE CHAT------------>
+                                  <!-----------SINGLE CONTACT CHAT------------>
               <div class="chat-boxes">
               
                <div 
@@ -78,13 +82,16 @@
                   </div>
                   <div v-if="contact.visible" class="chat-name">
                      <p>{{contact.name}}</p>
-                     <p>Ultimo</p>
+                     <!-- <p>{{contact.messages[contacts.messages.length - 1].message}}</p> -->
+                     <p v-if="contact && contact.messages && contact.messages.length > 0">
+                        {{ contact.messages[contact.messages.length - 1].message }}
+                     </p>
                   </div>
                   <div v-if="contact.visible" class="chat-hour">
                      <p>12:00</p>
                   </div>
                </div>
-                                  <!----------/SINGLE CHAT------------>
+                                  <!----------/SINGLE CONTACT CHAT------------>
 
             </div>
 
@@ -119,6 +126,7 @@
                <p class="critografy"> 🔒 I messaggi che invii in questa chat e le
                   chiamate sono ora protetti con la crittografia
                   end-to-end. Tocca per maggiori info.</p>
+               <p class="date-chat"></p>
                <div class=" d-flex d-justify-between"
                     v-for="(chat ,index) in contacts[activeChat].messages"
                     :class="chat.status">
@@ -149,7 +157,20 @@
                <i class="fa-solid fa-microphone" ></i>
             </div>
             <!-- box not visible with activated click icoin face smile -->
-            <template v-if="emocy" ><div class="box-emocy">😂❤😊🤣😍😒👌😘💕😁👍🙌🤦‍♀️🤦‍♂️🤷‍♀️😢😎😉🤞✌🤷‍♂️😜👏💋🌹</div></template>
+            <template v-if="emocy" >
+               <div class="box-emocy">
+                  <input class="input-emocy" type="text" placeholder="Ricerca la tua emocy">
+                  <p>Recenti</p>
+                  😂❤😊🤣😍😒
+                  <p>Faccine</p>
+                  👌😘💕😁👍🙌🤦‍♀️🤦‍♂️🤷‍♀️😢😎😉🤞✌🤷‍♂️😜👏💋🌹
+                  <div class="keys-emocy d-flex d-justify-around">
+                     <p>GIF</p>
+                     <p>STIKERS</p>
+                     <p>AVATAR</p>
+                  </div>
+               </div>
+            </template>
          </div>
                                        <!---------/INPUT CHAT --------------->
 
