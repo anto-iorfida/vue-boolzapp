@@ -82,13 +82,16 @@
                   </div>
                   <div v-if="contact.visible" class="chat-name">
                      <p>{{contact.name}}</p>
-                     <!-- <p>{{contact.messages[contacts.messages.length - 1].message}}</p> -->
-                     <p v-if="contact && contact.messages && contact.messages.length > 0">
+             
+                     <p v-if="contact.messages.length > 0">
                         {{ contact.messages[contact.messages.length - 1].message }}
                      </p>
                   </div>
                   <div v-if="contact.visible" class="chat-hour">
-                     <p>12:00</p>
+                     <!-- <p>12:00</p> -->
+                     <p v-if="contact.messages.length > 0">
+                        {{ contact.messages[contact.messages.length - 1].date }}
+                     </p>
                   </div>
                </div>
                                   <!----------/SINGLE CONTACT CHAT------------>
@@ -122,11 +125,11 @@
 
                                     <!------------  CHAT ----------------->
 
-            <div class="box-chat" >
+            <div class="box-chat" ref="chatScroll">
                <p class="critografy"> 🔒 I messaggi che invii in questa chat e le
                   chiamate sono ora protetti con la crittografia
                   end-to-end. Tocca per maggiori info.</p>
-               <p class="date-chat"></p>
+               <p class="date-chat" >{{ formatDate(activeChat) }}</p>
                <div class=" d-flex d-justify-between"
                     v-for="(chat ,index) in contacts[activeChat].messages"
                     :class="chat.status">
@@ -161,9 +164,9 @@
                <div class="box-emocy">
                   <input class="input-emocy" type="text" placeholder="Ricerca la tua emocy">
                   <p>Recenti</p>
-                  😂❤😊🤣😍😒
+                 <span> 😂❤😊🤣😍😒</span>
                   <p>Faccine</p>
-                  👌😘💕😁👍🙌🤦‍♀️🤦‍♂️🤷‍♀️😢😎😉🤞✌🤷‍♂️😜👏💋🌹
+                  <span>👌😘💕😁👍🙌🤦‍♀️🤦‍♂️🤷‍♀️😢😎😉🤞✌🤷‍♂️😜👏💋🌹</span>
                   <div class="keys-emocy d-flex d-justify-around">
                      <p>GIF</p>
                      <p>STIKERS</p>

@@ -145,6 +145,17 @@ createApp({
           };
           return date.toLocaleTimeString('it-IT', options);
         },
+
+        // data in box date-chat 
+        formatDate(activeChat) {
+          
+          if (this.contacts[0].messages.length > 0) {
+            const dateParts = this.contacts[activeChat].messages[0].date.split(' ');
+            console.log(dateParts);
+            // return data 
+            return dateParts[0]; 
+          } 
+        },
          
        // function user send message with input
         getSentMessage(){
@@ -164,8 +175,12 @@ createApp({
                 setTimeout(() => {
                     this.getReceiveMessage()
                    }, 1000);
+                  
+                  
+                  this.getAutoScroll()
 
             }else{
+              // animation animatedInputWrong in input 
                 this.animatedActive = true
                 setTimeout(() => {
                     this.animatedActive = false;
@@ -174,6 +189,13 @@ createApp({
 
             this.messageSend = '';
            
+        },
+        
+        // scoll automatic last message 
+        getAutoScroll(){
+          const chatScroll = this.$refs.chatScroll;
+          chatScroll.scrollTop = chatScroll.scrollHeight;
+          
         },
 
         // function contact send message later 1 second
@@ -186,6 +208,8 @@ createApp({
                 status: 'received'
             }
             this.contacts[this.activeChat].messages.push(templateReceiveMessage);
+            
+            this.getAutoScroll()
 
         },
 
