@@ -90,6 +90,11 @@ createApp({
             notific: true,
             // if in the input the length of the word does not exceed 0 it appears
             animatedActive : false,
+
+            inputNewContact: false,
+
+            nameNewContact: '',
+            imageNewContact:'',
             // It is used to show the setting box of the single message
             settingMessage : null,
             // important index that makes the chat active
@@ -154,7 +159,6 @@ createApp({
           
           if (this.contacts[0].messages.length > 0) {
             const dateParts = this.contacts[activeChat].messages[0].date.split(' ');
-            console.log(dateParts);
             // return data 
             return dateParts[0]; 
           } 
@@ -174,7 +178,7 @@ createApp({
 
                 this.contacts[this.activeChat].messages.push(templateSendMessage);
 
-                this.userAccess = 'Sta scrivendo'
+                this.userAccess = 'Sta scrivendo...'
 
                 // sent messsage contact later 1 second
                 setTimeout(() => {
@@ -251,6 +255,41 @@ createApp({
         // delete chat
         deleteChat(index){
           this.contacts.splice(index,1)
+        },
+
+        // add controll input create new contact
+        getInputNewContact(){
+          this.inputNewContact = !this.inputNewContact
+        },
+
+        // add new contact
+        addNewContact(){
+          const templateNewUser =
+          {
+            name: this.nameNewContact,
+            avatar: `_${this.imageNewContact}`,
+            visible: true,
+            messages: [
+              {
+                date: '10/01/2020 15:30:55',
+                message: `Benvenuto su Whatsapp ${this.nameNewContact}`,
+                status: 'sent'
+              }
+            ]
+          }
+
+          this.contacts.push(templateNewUser);
+          
+          // svuotare input dopo aver preso il dato
+          this.nameNewContact = '';
+          this.imageNewContact='';
+
+          // impostare falso cosi pannello di controllo scompare dopo aver preso i dati
+          this.inputNewContact = false;
+
+          console.log(this.contacts);
+
+
         }
 
         // 

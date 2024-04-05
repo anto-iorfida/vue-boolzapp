@@ -104,10 +104,19 @@
             </div>
             <div class="add-contact d-flex">
                <p>Add contact</p>
-               <span @click="addNewContact"><i class="fa-solid fa-plus"></i></span>
+               <span @click="getInputNewContact"><i class="fa-solid fa-plus"></i></span>
             </div>
 
          </div>
+         <template v-if="inputNewContact">
+            <div class="create-user d-flex d-align-center">
+                <input type="text" placeholder="Come si chiama?" v-model="nameNewContact">
+                <input type="text" placeholder="Qual è il suo numero?" >
+                <input type="text" placeholder="Scrivi un numero da 1 a 8 per img profilo " v-model="imageNewContact">
+                <button @click="addNewContact">Crea</button>
+             </div>
+         </template>
+         
 
          <!-- right column with chat -->
          <div class="colon-chat">
