@@ -178,12 +178,9 @@ createApp({
 
                 // sent messsage contact later 1 second
                 setTimeout(() => {
-                    this.getReceiveMessage()
-                   }, 3000);
-                setTimeout(() => {
+                    this.getReceiveMessage(),
                     this.userAccess = 'Online'
-                }, 3001);
-                  
+                   }, 3000);
                   
                   this.getAutoScroll()
 
@@ -192,7 +189,7 @@ createApp({
                 this.animatedActive = true
                 setTimeout(() => {
                     this.animatedActive = false;
-                }, 1000);
+                }, 500);
             }
 
             this.messageSend = '';
@@ -250,6 +247,11 @@ createApp({
           this.contacts[activeChat].messages.splice(index, 1);
           this.settingMessage = null;
         },
+
+        // delete chat
+        deleteChat(index){
+          this.contacts.splice(index,1)
+        }
 
         // 
        

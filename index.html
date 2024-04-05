@@ -70,7 +70,7 @@
                                   <!--------/BOX INPUT CERCH------------>
 
                                   <!-----------SINGLE CONTACT CHAT------------>
-              <div class="chat-boxes">
+            <div class="chat-boxes">
               
                <div 
                class="chat-info d-flex" 
@@ -95,9 +95,16 @@
                         {{ contact.messages[contact.messages.length - 1].date }}
                      </p>
                   </div>
+                  <div class="trash-chat" @click="deleteChat(index)">
+                     <i class="fa-solid fa-trash"></i>
+                  </div>
                </div>
                                   <!----------/SINGLE CONTACT CHAT------------>
 
+            </div>
+            <div class="add-contact d-flex">
+               <p>Add contact</p>
+               <span @click="addNewContact"><i class="fa-solid fa-plus"></i></span>
             </div>
 
          </div>

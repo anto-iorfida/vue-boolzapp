@@ -74,6 +74,7 @@ img{
     width: 30%;
     height: 100%;
     background-color: white;
+    position: relative;
 }
 /* ------------------------------------------header with info user */
 .box-info-user{
@@ -182,8 +183,34 @@ img{
     font-size: xx-small;
     color: gray;
 }
-/* ----------------------------------------------/single-contact */
 
+.trash-chat{
+    font-size: small;
+    position: absolute;
+    display: none;
+    bottom: 5px;
+    right: 10px;
+    color: gray;
+    cursor: pointer;
+}
+
+.chat-info:hover .trash-chat {
+    display: block;
+}
+/* ----------------------------------------------/single-contact */
+/* ---------------------------------------------/delete message */
+.add-contact{
+    position: absolute;
+    font-size: small;
+    color: gray;
+    bottom: 10px;
+    right: 10px;
+    gap: 6px;
+}
+.add-contact i{
+    cursor: pointer;
+}
+/* ----------------------------------------------delete message */
 /* container-right-chat */
 .colon-chat{
     width: 70%;
